@@ -11,6 +11,12 @@ module Rack
         puts "Registered over Bonjour."
       end
     end
+    
+    def call env
+      status, headers, body = @app.call env
+      
+      [status, headers, body]
+    end
   end
 end
 
@@ -19,7 +25,7 @@ end
 # require 'sinatra/base'
 # 
 # class App < Sinatra::Base
-#   use Rack::Jour, "name", 4567
+#   use Rack::Jour, "nifty-server", 4567
 # end
 # 
 # run App.new

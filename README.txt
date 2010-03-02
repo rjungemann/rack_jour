@@ -10,9 +10,23 @@ Usage:
 	require 'rack_jour'
 	
 	class App < Sinatra::Base
-	  use Rack::Jour, "name", 4567
+	  use Rack::Jour, "nifty-server", 4567
 	end
 	
 	run App.new
 	
 Requires the dnssd gem.
+
+To search for these Bonjour-exposed servers easily, you can use appjour.
+
+To install:
+
+  sudo gem install lachie-appjour --source=http://gems.github.com
+  
+To use:
+
+  appjour
+  #=> Searching for servers (3 seconds)
+  #=> Found web app called 'nifty-server'
+
+  appjour nifty-server
