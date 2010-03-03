@@ -14,6 +14,19 @@ Usage:
 	end
 	
 	run App.new
+
+You can use it like this with Sinatra so you don't have to know the port.
+
+  require 'sinatra/base'
+  require "rack_jour"
+  
+  class App < Sinatra::Base
+    configure do |app|
+      app.use Rack::Jour, "nifty-server", app.port
+    end
+  end
+  
+  run App.new
 	
 Requires the dnssd gem.
 
