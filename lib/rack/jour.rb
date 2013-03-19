@@ -6,9 +6,10 @@ module Rack
   class Jour
     def initialize app, name, port
       @app, @name, @port = app, name, port
-      
-      @service ||= DNSSD.register(@name, "_http._tcp", nil, @port) do
-        puts "Registered over Bonjour."
+      @type = "_http._tcp"
+
+      @service ||= DNSSD.register(@name, @type, nil, @port) do
+        puts "Registered #{@type} service '#{@name}' @ port #{@port} using DNSSD/Bonjour"
       end
     end
     
